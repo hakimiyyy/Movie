@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Search</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #000000;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #FF0000;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: #000000;
+      color: #FF9900;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #212020;
+    }
+
+    #demo1 {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .movie {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      background-color: #FF9900;
+      border-radius: 4px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .movie:hover {
+      background-color: #FF6600;
+    }
+    .idmov {
+      width: 200px;
+      height: 200px;
+      padding: 20px;
+      border: 1px solid #FF0000;
+      border-radius: 4px;
+      background-color: #000000;
+    }
+
+    .movie img {
+      width: 80px;
+      height: 120px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+    }
+
+    .movie p {
+      margin: 0;
+      font-size: 16px;
+      color: #FF0000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      background-color: #000000;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #FF9900;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #FF0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="recommendations.html">Recommendations</a>
+    <a href="index.html">Search</a>
+    <a href="watchlist.html">Watchlist</a>
+  </div>
+  <div class="container">
+    <h1>Search Movie</h1>
+    <input type="text" id="searchInput" class="search-input" placeholder="Search Movie">
+    <button onclick="buttonClicked()" class="search-button">Search</button>
+    <div id="demo1" class="movie-results"></div>
+    <div id="demo"></div>
+  </div>
+  <script src="search.js"></script>
+</body>
+</html>

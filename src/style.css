@@ -1,0 +1,104 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff; /* Background */
+  color: #1f1235; /* Headline */
+}
+
+header {
+  background-color: #1f1235; /* Headline */
+  color: #ffffff; /* Background */
+  padding: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  color: #ffffff; /* Background */
+  text-decoration: none;
+}
+
+.wishlist-box {
+  padding: 10px;
+  border: 1px solid #ff6e6c; /* Button */
+  border-radius: 4px;
+  background-color: transparent;
+  color: #ff6e6c; /* Button */
+  cursor: pointer;
+}
+
+.wishlist-box:hover {
+  background-color: #ff6e6c; /* Button */
+  color: #1f1235; /* Button text */
+}
+
+.main-title {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  margin: 40px 0;
+  color: #1b1425; /* Sub headline */
+}
+
+#movie-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.movie-item {
+  background-color: #ffffff; /* Main */
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.movie-item:hover {
+  transform: scale(1.05);
+}
+
+.movie-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px;
+  color: #1f1235; /* Headline */
+}
+
+.movie-year {
+  font-size: 14px;
+  margin: 10px;
+}
+
+.movie-poster {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Adjust the maximum height as desired */
+  object-fit: cover;
+}
+
+

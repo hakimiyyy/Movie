@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recommended Movies</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      color: #ff6600;
+    }
+
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .button button {
+      padding: 8px 16px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #ff6600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .button button:hover {
+      background-color: #ff3300;
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .input-container input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ff6600;
+      border-radius: 4px;
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    .movie-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .movie {
+      max-width: 300px;
+      background-color: #000000;
+      border-radius: 4px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .movie img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 4px;
+    }
+
+    .movie p {
+      margin: 0;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      background-color: #000000;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #ffffff;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #ff6600;
+    }
+  </style>
+  <script src="rec.js"></script>
+  <script>
+    function displayMovies(movies) {
+      const demo1Element = document.getElementById("demo1");
+      const demoElement = document.getElementById("demo");
+
+      demo1Element.innerHTML = "";
+      demoElement.innerHTML = "";
+
+      const sortedMovies = movies.sort((a, b) => b.Year - a.Year);
+
+      sortedMovies.forEach((movie) => {
+        const title = movie.Title;
+        const year = movie.Year;
+        const poster = movie.Poster;
+        const id = movie.imdbID;
+
+        const movieElement = document.createElement("div");
+        movieElement.classList.add("movie");
+
+        const posterElement = document.createElement("img");
+        posterElement.src = poster;
+        posterElement.alt = `${title} Poster`;
+
+        const idElement = document.createElement("idmov");
+        idElement.classList.add("id");
+        idElement.textContent = `ID: ${id}`;
+
+        const detailsElement = document.createElement("p");
+        detailsElement.textContent = `${title} (${year})`;
+
+        const buttonElement = document.createElement("a");
+        buttonElement.href = `viewmovie.html?id=${id}`;
+        buttonElement.textContent = "Movie Details";
+
+        buttonElement.addEventListener("click", () => {
+          fetchMovieDetails(id);
+        });
+
+        movieElement.appendChild(posterElement);
+        movieElement.appendChild(detailsElement);
+        movieElement.appendChild(buttonElement);
+        movieElement.appendChild(idElement);
+
+        demo1Element.appendChild(movieElement);
+      });
+    }
+
+    function buttonClicked() {
+      const apiKey = 'd35b21da';
+      const searchQuery = document.getElementById("searchInput").value;
+
+      fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${searchQuery}`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          const results = data.Search;
+
+          displayMovies(results);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+
+    function fetchMovieDetails(movieId) {
+      const apiKey = 'd35b21da';
+      const apiUrl = `https://www.omdbapi.com/?apikey=${apiKey}&i=${movieId}`;
+
+      fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          const synopsis = data.Plot;
+          const cast = data.Actors;
+          const releaseDate = data.Released;
+          const ratings = data.Ratings;
+          const poster = data.Poster;
+
+          document.getElementById("synopsis").textContent = synopsis;
+          document.getElementById("cast").textContent = cast;
+          document.getElementById("release-date").textContent = releaseDate;
+          document.getElementById("ratings").textContent = JSON.stringify(ratings);
+          document.getElementById("poster").src = poster;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  </script>
+</head>
+<body>
+  <div class="navbar">
+    <a href="recommendations.html">Recommendations</a>
+    <a href="index.html">Search</a>
+    <a href="watchlist.html">Watchlist</a>
+  </div>
+
+  <h1>Recommended Movies</h1>
+
+  <div class="movie-container" id="demo1"></div>
+  <div id="demo"></div>
+
+  <div class="button">
+    <button onclick="buttonClicked()">Search</button>
+  </div>
+
+  <div class="input-container">
+    <input type="text" id="searchInput" placeholder="Enter movie title">
+  </div>
+
+  <script>
+    const imdbID = "tt1234567";
+    const movieTitle = "Example Movie";
+    fetchAndDisplayRecommendedMovies(imdbID, movieTitle);
+  </script>
+</body>
+</html>

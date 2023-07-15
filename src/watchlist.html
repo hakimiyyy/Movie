@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Movie App</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      background-color: #FF6600;
+    }
+    
+    .navbar a {
+      text-decoration: none;
+      color: #000000;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar a:hover {
+      color: #FF9900;
+    }
+    
+    .mainWrapper {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #FF9900;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .mainWrapper h1 {
+      margin-bottom: 20px;
+    }
+    
+    form {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    label {
+      margin-right: 10px;
+    }
+    
+    input[type="text"] {
+      padding: 5px;
+      border: 1px solid #000000;
+      border-radius: 4px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      background-color: #FF6600;
+      color: #000000;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    button:hover {
+      background-color: #FF9900;
+    }
+    
+    #fileDisplay {
+      margin-bottom: 20px;
+    }
+    
+    .watchedContainer {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FF9900;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .watchedContainer h2 {
+      margin-bottom: 10px;
+    }
+    
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #000000;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      color: #FF9900;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      background-color: #FF6600;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #000000;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #FF9900;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="recommendations.html">Recommendations</a>
+    <a href="index.html">Search</a>
+    <a href="watchlist.html">Watchlist</a>
+  </div>
+  <div class="mainWrapper">
+    <h1>Create Your Watchlist:</h1>
+    <form>
+      <div>
+        <label for="fileName">Movie Name:</label>
+        <input id="fileName" type="text" placeholder="Enter movie name">
+      </div>
+    </form>
+    <button id="btnCreate" onclick="createMovie()">Add to Watchlist</button>
+    <div id="fileDisplay"></div>
+  </div>
+
+  <div class="watchedContainer">
+    <h2>Watched Movies:</h2>
+    <div id="watchedMovies"></div>
+  </div>
+  <a href="index.html">Go Back</a>
+
+  
+<script src="crud.js">
+
+</script>
+</body>
+</html>
